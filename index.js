@@ -42,10 +42,10 @@ const promptUser = () => {
              addTeamMember();
            }
            if(data.addEmployee === 'no, my team is complete'){
-            const pageContent = generateHTML(data);
-            fs.writeFile('index.html', pageContent, (err) =>
-            err ? console.log(err) : console.log('Successfully created a team profile page!')
-          );
+            const pageContent = generateHTML(team);
+            console.log(pageContent);
+            fs.writeFile('index.html', pageContent.join(""), (err) =>
+           err ? console.log(err) : console.log('Successfully created a team profile page!'));
         }
        })
   }
@@ -90,7 +90,7 @@ const promptUser = () => {
             }
         ])
         .then(function(data){
-            console.log(`Manager name is ${data.name} id is ${data.id} email ${data.email} Phone number is ${data.officeNum}`);
+            console.log(`Managers name is ${data.name} id is ${data.id} email ${data.email} Phone number is ${data.officeNum}`);
             const name = data.name;
             const id = data.id;
             const email = data.email;
