@@ -12,9 +12,7 @@ let team = [];
 const promptUser = () => {
     inquirer.prompt([
      {
-        type: 'list',
-        name: 'makeTeam',
-        message: 'Would you like to make a team profile?',
+        type: 'list', name: 'makeTeam', message: 'Would you like to make a team profile?',
         choices: [
             "yes",
             "no"
@@ -33,12 +31,10 @@ const promptUser = () => {
   const addEmployee = () => {
     inquirer.prompt([
         {
-           type: 'list',
-           name: 'addEmployee',
-           message: 'Would you like to add an employee?',
+           type: 'list', name: 'addEmployee', message: 'Would you like to add an employee?',
            choices: [
                "yes",
-               "no"
+               "no, my team is complete"
            ]
         }
        ])
@@ -46,32 +42,15 @@ const promptUser = () => {
            if(data.addEmployee === 'yes'){
              addTeamMember();
            }
-           if(data.addEmployee === 'no'){
-               return;
+           if(data.addEmployee === 'no, my team is complete'){
+               return console.log(team);
            }
        })
   }
   const addTeamMember = () => {
     inquirer.prompt([
-        {
-           type: 'input',
-           name: 'name',
-           message: 'What is the team members name',
-        },
-        {
-            type: 'input',
-            name: 'id',
-            message: 'What is the team members ID number',
-         } ,       
          {
-            type: 'input',
-            name: 'email',
-            message: 'What is the team members email address?',
-         },
-         {
-            type: 'list',
-            name: 'role',
-            message: 'What is the team members role',
+            type: 'list', name: 'role', message: 'What is the team members role',
             choices: [
                 'Manager',
                 'Engineer',
@@ -81,56 +60,95 @@ const promptUser = () => {
        ])
        .then(function(data){
         if(data.role === 'Manager'){
-            addManager(data.name, data.id, data.email);
+            addManager();
         }
         if(data.role == 'Engineer'){
-            addEngineer(data.name, data.id, data.email);
+            addEngineer();
         }
         if(data.role === 'Intern'){
-            addIntern(data.name, data.id, data.email);
+            addIntern();
         }
     })
 
     }
 
-    const addManager = (name, id, email) => {
+    const addManager = () => {
         inquirer.prompt([
             {
-                type: 'input',
-                name: 'officeNum',
-                message: 'Please enter your managers number'
+                type: 'input', name: 'name', message: 'What is the Managers name?',
+            },
+            {
+              type: 'input', name: 'id', message: 'What is the Managers ID number',
+            } ,       
+            {
+               type: 'input', name: 'email', message: 'What is the Managers email address?',
+            },
+            {
+               type: 'input', name: 'officeNum', message: 'Please enter your managers phone number'
             }
         ])
         .then(function(data){
-            console.log(`Managers name is ${name} id is ${id} email ${email} Phone number is ${data.officeNum}`);
+            console.log(`Managers name is ${data.name} id is ${data.id} email ${data.email} Phone number is ${data.officeNum}`);
+            const name = data.name;
+            const id = data.id;
+            const email = data.email;
+            const officeNum = data.officeNum;
+            const member = new Manager(name, id, email, officeNum);
+            team.push(member);
             addEmployee();
         })
     }
 
-    const addEngineer = (name, id, email) => {
+    const addEngineer = () => {
         inquirer.prompt([
             {
-                type: 'input',
-                name: 'github',
-                message: 'Please enter your github username'
+                type: 'input', name: 'name', message: 'What is the Engineers name?',
+            },
+            {
+                type: 'input', name: 'id', message: 'What is the Engineers ID number?',
+            } ,       
+            {
+                type: 'input', name: 'email', message: 'What is the Engineers email address?',
+            },
+            {
+                type: 'input', name: 'github', message: 'Please enter the Engineers github username'
             }
         ])
         .then(function(data){
-            console.log(`Engineers name is ${name} id is ${id} email ${email} GitHub is github.com/${data.github}`);
+            console.log(`Engineers name is ${data.name} id is ${data.id} email ${data.email} GitHub is github.com/${data.github}`);
+            const name = data.name;
+            const id = data.id;
+            const email = data.email;
+            const github = data.github;
+            const member = new Engineer(name, id, email, github);
+            team.push(member);
             addEmployee();
         })
     }
 
-    const addIntern = (name, id, email) => {
+    const addIntern = () => {
         inquirer.prompt([
             {
-                type: 'input',
-                name: 'school',
-                message: 'Please enter what school you are attending'
+                type: 'input', name: 'name', message: 'What is the Interns name?',
+            },
+            {
+                type: 'input', name: 'id', message: 'What is the Interns ID number?',
+            } ,       
+            {
+                type: 'input', name: 'email', message: 'What is the Interns email address?',
+            },
+            {
+                type: 'input', name: 'school', message: 'Please enter what school the Intern is attending'
             }
         ])
         .then(function(data){
-            console.log(`Interns name is ${name} id is ${id} email ${email} is attending ${data.school}`);
+            console.log(`Interns name is ${data.ame} id is ${data.id} email ${data.email} is attending ${data.school}`);
+            const name = data.name;
+            const id = data.id;
+            const email = data.email;
+            const school = data.school;
+            const member = new Intern(name, id, email, school);
+            team.push(member);
             addEmployee();
         })
     }
