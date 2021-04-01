@@ -43,7 +43,7 @@ const promptUser = () => {
            }
            if(data.addEmployee === 'no, my team is complete'){
             const pageContent = generateHTML(team);
-            console.log(pageContent);
+            //console.log(pageContent);
             fs.writeFile('index.html', pageContent.join(""), (err) =>
            err ? console.log(err) : console.log('Successfully created a team profile page!'));
         }
