@@ -24,7 +24,7 @@ A TDD application that on a Node.js command-line application that takes in infor
 
 ## Gif 
 
-  ![gif]()
+  ![gif](./images/team-profile-generator.gif)
   
 ## Testing
 
