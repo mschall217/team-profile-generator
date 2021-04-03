@@ -49,7 +49,7 @@ const promptUser = () => {
         }
        })
   }
-  const addTeamMember = () => {
+    const addTeamMember = () => {
     inquirer.prompt([
          {
             type: 'list', name: 'role', message: 'What is the team members role',
