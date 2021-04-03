@@ -7,6 +7,7 @@ A TDD application that on a Node.js command-line application that takes in infor
   - [Installation](#installation)
   - [Usage](#usage)
   - [GIF](#gif)
+  - [screenshot](#screenshot)
   - [Testing](#testing)
   - [Support](#support)
   - [Contributing](#contributing)
@@ -25,6 +26,9 @@ A TDD application that on a Node.js command-line application that takes in infor
 ## Gif 
 
   ![gif](./images/team-profile-generator.gif)
+
+## Screenshot of Sample Page 
+  ![screenshot](./images/team-profile-generator.png)
   
 ## Testing
 
